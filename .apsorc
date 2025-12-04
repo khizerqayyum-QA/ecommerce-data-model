@@ -1,0 +1,105 @@
+{
+  "entities": [
+    {
+      "name": "Product",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "name",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true
+        },
+        {
+          "name": "price",
+          "type": "money",
+          "nullable": false
+        },
+        {
+          "name": "stock_quantity",
+          "type": "integer",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "varchar",
+          "nullable": false,
+          "default": "active"
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "order_date",
+          "type": "timestamp",
+          "nullable": false
+        },
+        {
+          "name": "total_amount",
+          "type": "money",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "varchar",
+          "nullable": false,
+          "default": "pending"
+        }
+      ]
+    },
+    {
+      "name": "Customer",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "first_name",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "last_name",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "email",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "phone_number",
+          "type": "varchar",
+          "nullable": true
+        },
+        {
+          "name": "address",
+          "type": "text",
+          "nullable": true
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Customer",
+      "to": "Order",
+      "type": "OneToMany"
+    },
+    {
+      "from": "Order",
+      "to": "Product",
+      "type": "OneToMany"
+    }
+  ],
+  "_removedEntities": []
+}
